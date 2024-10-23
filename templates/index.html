@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+</head>
+<body>
+    <center>
+    <h1>SEGUNDO PARCIAL TEM-742</h1>
+    <h3>Nombre:Alex Player Ramos Tola</h3>
+    <h3>Carnet: 7086524</h3>
+    <h1>Gestion  de productos</h1>
+    </center>
+    
+    <a href="{{url_for('nuevo')}}">Nuevo</a>
+    <center>
+    <table border="1">
+        <tr>
+            <th style="background-color: green">Id</th>
+            <th style="background-color: green">Nombre</th>
+            <th style="background-color: green">Cantidad</th>
+            <th style="background-color: green">Precio</th>
+            <th style="background-color: green">Fecha Vencimiento</th>
+            <th style="background-color: green">Categoria</th>
+            <th style="background-color: green"></th>
+            <th style="background-color: green"></th>
+        </tr>
+        {% for item in productos%}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.precio}}</td>
+            <td>{{item.fecha_vencimiento}}</td>
+            <td>{{item.categoria}}</td>
+            <td> <a href="{{url_for('editar',id=item.id)}}">Editar</a></td>
+            <td>
+                <form action="{{url_for('eliminar',id=item.id)}}" method="POST">
+                    <input type="submit" value="Eliminar">
+
+
+                </form>
+
+
+
+
+            </td>
+        </tr>
+        {%endfor%}
+
+    </table>
+    </center>
+</body>
+</html>
